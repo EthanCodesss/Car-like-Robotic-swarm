@@ -429,6 +429,7 @@ bool TrajPlanner::RunMINCOParking()
   std::vector<Eigen::MatrixXd> iniState_container, finState_container;
   duration_container.resize(kino_trajs_.size());
 
+  // 将轨迹点从轨迹中提取出来, 并且只提取x y
   for(unsigned int i = 0; i < kino_trajs_.size(); i++)
   {
     double timePerPiece = traj_piece_duration_;
@@ -473,6 +474,7 @@ bool TrajPlanner::RunMINCOParking()
         statelist.push_back(pos);
         if(k==resolution && i!=piece_nums-1)
         {
+          // 这里只提取了x,y 作为waypoint
           ego_innerPs.col(i) = pos.head(2);
         }
       }

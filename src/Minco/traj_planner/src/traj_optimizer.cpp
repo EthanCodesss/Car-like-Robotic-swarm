@@ -9,6 +9,7 @@ namespace plan_manage
       std::vector<Eigen::MatrixXd> &initInnerPts, const Eigen::VectorXd &initTs,
       std::vector<std::vector<Eigen::MatrixXd>> &hPoly_container,std::vector<int> singuls,double now, double help_eps)
   {
+    // 轨迹段的数量
     trajnum = initInnerPts.size();
     epis = help_eps;
     cfgHs_container = hPoly_container;
@@ -28,7 +29,7 @@ namespace plan_manage
     }
 
     
-
+    // 遍历每个轨迹段
     for(int i = 0; i < trajnum; i++){
       //check
       if(initInnerPts[i].cols()==0){
@@ -65,7 +66,8 @@ namespace plan_manage
       variable_num_ += 2 * (piece_num_ - 1);
 
 
-    }  
+    } 
+    // 我觉得这里是time duration, 因为是一维的 
     variable_num_ += trajnum;
     
 
